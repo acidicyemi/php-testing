@@ -7,6 +7,13 @@ use PHPUnit\Framework\TestCase;
 
 class TagParserTest extends TestCase {
 
+    protected $parser;
+
+    protected function setUp() : void
+    {
+        $this->parser = new TagParser;
+    }
+
     /**
      * @test
      */
@@ -14,7 +21,7 @@ class TagParserTest extends TestCase {
     {
         $parser = new TagParser;
 
-        $result = $parser->parse('personal');
+        $result = $this->parser->parse('personal');
 
         $expected = ['personal'];
         
@@ -28,7 +35,7 @@ class TagParserTest extends TestCase {
     {
         $parser = new TagParser;
 
-        $result = $parser->parse('personal, money, family');
+        $result = $this->parser->parse('personal, money, family');
 
         $expected = ['personal','money',"family"];
         
@@ -42,7 +49,7 @@ class TagParserTest extends TestCase {
     {
         $parser = new TagParser;
 
-        $result = $parser->parse('personal,money,family');
+        $result = $this->parser->parse('personal,money,family');
 
         $expected = ['personal','money',"family"];
         
@@ -54,12 +61,15 @@ class TagParserTest extends TestCase {
      */
     public function it_parses_a_pipe_separated_list_of_tags()
     {
+        // Given or Arrange
         $parser = new TagParser;
 
-        $result = $parser->parse('personal | money | family');
+        // When or Act
+        $result = $this->parser->parse('personal | money | family');
 
         $expected = ['personal','money',"family"];
         
+        // Then or Assert
         $this->assertEquals($expected, $result);
     }
 }
