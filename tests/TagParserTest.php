@@ -33,5 +33,11 @@ class TagParserTest extends TestCase {
         $expected = ['personal','money',"family"];
         
         $this->assertEquals($expected, $result);
+
+        $result = $parser->parse('personal,money,family');
+
+        $expected = ['personal','money',"family"];
+        
+        $this->assertEquals($expected, $result);
     }
 }
