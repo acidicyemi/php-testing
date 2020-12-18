@@ -20,4 +20,18 @@ class TagParserTest extends TestCase {
         
         $this->assertEquals($expected, $result);
     }
+
+    /**
+     * @test
+     */
+    public function it_parses_a_comma_seperated_list_of_tags()
+    {
+        $parser = new TagParser;
+
+        $result = $parser->parse('personal, money, family');
+
+        $expected = ['personal','money',"family"];
+        
+        $this->assertEquals($expected, $result);
+    }
 }

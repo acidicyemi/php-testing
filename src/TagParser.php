@@ -4,8 +4,8 @@ namespace App;
 
 class TagParser {
 
-    public function parse(string $tags)
+    public function parse(string $tags): array
     {
-        return [$tags];
+        return explode(', ', $tags);
     }
 }
