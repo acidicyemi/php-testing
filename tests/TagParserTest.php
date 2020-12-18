@@ -33,6 +33,13 @@ class TagParserTest extends TestCase {
         $expected = ['personal','money',"family"];
         
         $this->assertEquals($expected, $result);
+    }
+    /**
+     * @test
+     */
+    public function commas_are_optional()
+    {
+        $parser = new TagParser;
 
         $result = $parser->parse('personal,money,family');
 
