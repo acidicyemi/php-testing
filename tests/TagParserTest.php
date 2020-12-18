@@ -34,14 +34,29 @@ class TagParserTest extends TestCase {
         
         $this->assertEquals($expected, $result);
     }
+    
     /**
      * @test
      */
-    public function commas_are_optional()
+    public function commas_spaces_are_optional()
     {
         $parser = new TagParser;
 
         $result = $parser->parse('personal,money,family');
+
+        $expected = ['personal','money',"family"];
+        
+        $this->assertEquals($expected, $result);
+    }
+
+    /**
+     * @test
+     */
+    public function it_parses_a_pipe_separated_list_of_tags()
+    {
+        $parser = new TagParser;
+
+        $result = $parser->parse('personal | money | family');
 
         $expected = ['personal','money',"family"];
         
